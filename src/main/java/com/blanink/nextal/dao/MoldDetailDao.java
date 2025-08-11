@@ -14,4 +14,6 @@ public interface MoldDetailDao extends JpaRepository<MoldDetail,Integer> {
             "(:machineName IS NULL OR md.machineName LIKE concat('%', :machineName, '%')) AND" +
             "(:moldDrawingNumber IS NULL OR md.moldDrawingNumber = :moldDrawingNumber )")
     List<MoldDetail> findByMachineNameLikeAndMoldDrawingNumberIs(String machineName,String moldDrawingNumber);
+
+    List<MoldDetail> findByMachineNameContainingAndMoldDrawingNumber(String machineName, String moldDrawingNumber);
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_customer_order")
@@ -101,6 +102,23 @@ public class CustomerOrder {
      */
     @Column(name = "update_date")
     private Date updateDate;
+
+    /**
+     * 优先级
+     */
+    @Column(name = "priority")
+    private Integer priority;
+
+    @Transient
+    private List<MoldDetail> moldDetails;
+
+    public List<MoldDetail> getMoldDetails() {
+        return moldDetails;
+    }
+
+    public void setMoldDetails(List<MoldDetail> moldDetails) {
+        this.moldDetails = moldDetails;
+    }
 
     // --- Getters and Setters ---
 
@@ -222,5 +240,13 @@ public class CustomerOrder {
 
     public void setMoldDrawingNo(String moldDrawingNo) {
         this.moldDrawingNo = moldDrawingNo;
+    }
+
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 }

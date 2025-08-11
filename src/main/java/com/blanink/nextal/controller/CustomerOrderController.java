@@ -1,10 +1,11 @@
 package com.blanink.nextal.controller;
 
-import com.blanink.nextal.entity.AluminumInventory;
 import com.blanink.nextal.entity.CustomerOrder;
+import com.blanink.nextal.entity.ResultView;
 import com.blanink.nextal.service.CustomerOrderService;
 import com.blanink.nextal.utils.EmptyUtils;
 import com.blanink.nextal.utils.PageUtils;
+import com.blanink.nextal.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +28,16 @@ public class CustomerOrderController {
         Page<CustomerOrder> resultList= customerOrderService.findByDepartmentMachineIsLike(pageNo,pageSize,orderBy,sortOrder,departmentMachine);
         PageUtils pageUtil = new PageUtils(resultList.getContent(), (int)resultList.getTotalElements());
         return pageUtil;
+    }
+
+    @PutMapping("/updatePriority")
+    public ResultView updatePriority(@RequestParam Integer id, @RequestParam Integer priority) {
+        try {
+            customerOrderService.updatePriority(id, priority);
+            return ResultUtils.success("优先级更新成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultUtils.error(400,"优先级更新失败");
+        }
     }
 }

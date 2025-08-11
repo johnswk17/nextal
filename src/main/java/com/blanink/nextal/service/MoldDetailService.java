@@ -22,4 +22,8 @@ public class MoldDetailService {
         List<MoldDetail> moldDetailList= moldDetailDao.findByMachineNameLikeAndMoldDrawingNumberIs(machineName,moldDrawingNumber);
         return moldDetailList;
     }
+
+    public List<MoldDetail> findByMachineNameAndDrawingNo(String machineName, String moldDrawingNo) {
+        return moldDetailDao.findByMachineNameContainingAndMoldDrawingNumber(machineName, moldDrawingNo);
+    }
 }
