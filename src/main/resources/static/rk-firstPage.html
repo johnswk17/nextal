@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title></title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <!-- site css -->
+      <link rel="stylesheet" href="style.css" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="css/responsive.css" />
+      <!-- color css -->
+      <link rel="stylesheet" href="css/color_2.css" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="css/bootstrap-select.css" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="css/perfect-scrollbar.css" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="css/custom.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <style>
+         #personInfoClip{
+				display: inline;
+			}
+      </style>
+   </head>
+   <body class="dashboard dashboard_2">
+      <div class="full_container">
+         <div class="inner_container">
+            <div class="midde_cont">
+                <div class="container-fluid">
+                   <div class="row column_title">
+                      <div class="col-md-12">
+                         <div class="page_title">
+                            <h2 style="display: inline;">REAK MES SYSTEM</h2>
+                            <ui id="personInfoClip">
+                           </ui>
+                            <button class="btn btn-success" type="button"  value="点击全屏" id="full" onclick="fullScreen()" style="float: right; display: inline;">点击全屏</button>
+						            <button class="btn btn-danger" type="button" hidden value="退出全屏" id="exitFull" onclick="exitScreen()" style="float: right; display: inline;">退出全屏</button>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row column1">
+                      <div class="col-md-6 col-lg-3">
+                           <a href="#">
+                              <div class="full counter_section margin_bottom_30 yellow_bg" onclick="gotoDashboard(this)">
+                                 <div class="couter_icon">
+                                    <div> 
+                                       <i class="fa fa-dashboard"></i>
+                                    </div>
+                                 </div>
+                                 <div class="counter_no">
+                                    <div>
+                                       <p class="total_no">仪表盘</p>
+                                       <p class="head_couter">Dashboard</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </a>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 blue1_bg" onclick="gotoSchedule(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-clock-o"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">进度排程</p>
+                                    <p class="head_couter">Schedule</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 blue1_bg" onclick="gotoAluminumList(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-clock-o"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">铝棒库存</p>
+                                    <p class="head_couter">Schedule</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 blue1_bg" onclick="gotoCustomerOrderList(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-clock-o"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">客户订单</p>
+                                    <p class="head_couter">Schedule</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                   
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 green_bg" onclick="gotoOrders(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-print"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">工单打印</p>
+                                    <p class="head_couter">Work list Print</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 red_bg" onclick="gotoEquipment(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-unlock-alt"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">设备选择</p>
+                                    <p class="head_couter">Equipment Select</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 purple_bg2" onclick="gotoTest(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-search"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">质检报工</p>
+                                    <p class="head_couter">QC Report</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 brown_bg" onclick="gotoClip(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-ticket"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">工序报工</p>
+                                    <p class="head_couter">Process Report</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 orange_bg2" onclick="gotoCheckHisList(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-suitcase"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">流转单据</p>
+                                    <p class="head_couter">Transfer</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 blue2_bg" onclick="gotoBgList(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-user"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">我的报工</p>
+                                    <p class="head_couter">My Report</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 green_bg" onclick="gotoBadList(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-question-circle"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">我的问题</p>
+                                    <p class="head_couter">My Questions</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 yellow_bg" onclick="gotoPerson(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-users"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">人员管理</p>
+                                    <p class="head_couter">Stuff Manage</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 yellow_bg" onclick="gotoWeight(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-cart-plus"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">原料称重</p>
+                                    <p class="head_couter">Material Weight</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="col-md-6 col-lg-3">
+                        <a href="#">
+                           <div class="full counter_section margin_bottom_30 green_bg" onclick="gotoJianDaoYun(this)">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-cloud"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">简道云</p>
+                                    <p class="head_couter">jiandaoyun</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                   </div>
+                </div>
+
+             </div>
+        </div>
+    </div>
+ </div>
+ <!-- jQuery -->
+ <script src="js/jquery v3.5.1.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <!-- wow animation -->
+ <script src="js/animate.js"></script>
+
+ <script>
+   
+         function  gotoDashboard(a){
+            //console.log("hello");
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>仪表盘");
+            parent.$('#frame').attr("src","./rk-dashboard.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoSchedule(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>进度排程");
+            parent.$('#frame').attr("src","./rk-schedule.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoEquipment(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>工单设备");
+            parent.$('#frame').attr("src","./rk-equipment.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoAluminumList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>铝棒库存");
+            parent.$('#frame').attr("src","./nextal-AluminumStock.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoCustomerOrderList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>客户订单明细");
+            parent.$('#frame').attr("src","./nextal-CustomerOrder.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+   
+         function gotoOrders(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>工单打印");
+            parent.$('#frame').attr("src","./rk-workOrderList.html");
+         }
+   
+         function gotoTest(a){
+            //console.log(a);
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>质检报工");
+            parent.$('#frame').attr("src","./rk-check.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+   
+         function gotoClip(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>工序报工");
+            parent.$('#frame').attr("src","./rk-clip.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoCheckHisList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>流转单据");
+            parent.$('#frame').attr("src","./rk-checkHisList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+         function gotoBgList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>我的报工");
+            parent.$('#frame').attr("src","./rk-bgList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+         
+         function gotoBadList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>问题记录");
+            parent.$('#frame').attr("src","./rk-badList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+
+         function gotoPerson(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>人员管理");
+            parent.$('#frame').attr("src","./rk-personList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+
+         function gotoWeight(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>原料称重");
+            parent.$('#frame').attr("src","./rk-weight.html");  
+         }
+         function gotoJianDaoYun(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>简道云");
+            parent.$('#frame').attr("src","https://rsowff2ivc.jiandaoyun.com/dash/6304472b0333860007e2f84a");
+         }
+
+
+         function fullScreen() {
+			// documentElement 属性以一个元素对象返回一个文档的文档元素
+                $('#full').attr("hidden","hidden");
+                $('#exitFull').removeAttr("hidden");
+				var el = document.documentElement;
+				el.requestFullscreen||el.mozRequestFullScreen||el.webkitRequestFullscreen||el.msRequestFullScreen?
+				el.requestFullscreen()||el.mozRequestFullScreen()|| el.webkitRequestFullscreen()||el.msRequestFullscreen():null;
+			}
+
+            function exitScreen() {
+                $('#exitFull').attr("hidden","hidden");
+                $('#full').removeAttr("hidden");
+                var el = document;
+                var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
+                if (cfs) {
+                    cfs.call(el);
+                } else if (typeof window.ActiveXObject !== "undefined") {
+                    //IE浏览器，模拟按下F11键退出全屏
+                    var wscript = new ActiveXObject("WScript.Shell");
+                    if (wscript != null) {
+                        wscript.SendKeys("{F11}");
+                    }
+                }
+            }
+
+            jQuery(document).ready(function() {
+				//$('#start').
+				   //$('#personInfoClip').append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+JSON.parse(sessionStorage.getItem('personInfo')).personName+"&nbsp;&nbsp;");//sessionStorage.getItem('personInfo').personName
+            });
+ </script>
+</body>
+</html>

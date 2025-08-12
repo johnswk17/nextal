@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>耐世拓</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="images/logo/blaninkhead.png" type="image/jpg" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <!-- site css -->
+      <link rel="stylesheet" href="style.css" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="css/responsive.css" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="css/custom.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <link rel="stylesheet" href="js/layui-v2.5.4/layui/css/layui.css">
+      <script type="text/javascript" src="js/layui-v2.5.4/layui/layui.js"></script>
+   </head>
+   <body class="dashboard dashboard_1">
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+                  <div class="sidebar-header">
+                     <div class="logo_section">
+                        <a href="#" onclick="gotoFirst()"><img class="logo_icon img-responsive" src="" alt="#" /></a>
+                     </div>
+                  </div>
+                  <div class="sidebar_user_info">
+                     <div class="icon_setting"></div>
+                     <div class="user_profle_side">
+                        <!-- <div class="user_img"><img class="img-responsive" src="images/layout_img/user_img.jpg" alt="#" /></div> -->
+                        <div class="user_info">
+                           <h2 style="color: white; font-style: oblique;">N&nbsp;e&nbsp;x&nbsp;t&nbsp;a&nbsp;l</h2>
+                           <p><!-- <span class="online_animation"></span> -->Nextal Aluminum Co., Ltd</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="sidebar_blog_2">
+                  <h4 >Blanink</h4>
+                  <ul class="list-unstyled components">
+                     <li class="active">
+                        <!-- <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-dashboard yellow_color"></i> <span>仪表盘</span></a>
+                        <ul class="collapse list-unstyled" id="dashboard"> -->
+                           <li>
+                              <a href="#" id="firstPage" onclick="gotoDashboard(this)"><i class="fa fa-dashboard yellow_color"></i> <span>默认仪表盘</span></a>
+                           </li>
+                        <!-- </ul>
+                     </li> -->
+                     <li><a href="#" onclick="gotoSchedule(this)"><i class="fa fa-clock-o orange_color"></i> <span>进度排程</span></a></li>
+                     <li>
+                        <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-paper-plane red_color"></i><span>报工管理</span></a>
+                        <ul class="collapse list-unstyled" id="element">
+                           <li><a href="#"  id="workOrders" onclick="gotoOrders(this)"> <span>> 工单打印</span></a></li>
+                           <li><a href="#"  id="equipment" onclick="gotoEquipment(this)"> <span>> 设备选择</span></a></li>
+                           <li><a href="#"  id="testPage" onclick="gotoTest(this)"> <span>> 质检报工</span></a></li>
+                           <li><a href="#"  id="clip" onclick="gotoClip(this)"> <span>> 工序报工</span></a></li>
+                        </ul>
+                     </li>
+                     <!-- <li><a href="tables.html"><i class="fa fa-table purple_color2"></i> <span>Tables</span></a></li> -->
+                     <li class="active">
+                        <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>数据查看</span></a>
+                        <ul class="collapse list-unstyled" id="additional_page">
+                           <li>
+                              <a href="#"  id="checkHisList" onclick="gotoCheckHisList(this)"> <span>> 流转单据</span></a>
+                           </li>
+                           <li>
+                              <a href="#"  id="bgList" onclick="gotoBgList(this)"> <span>> 我的报工</span></a>
+                           </li>
+                           <li>
+                              <a href="#"  id="badList" onclick="gotoBadList(this)"> <span>> 我的问题</span></a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-cog yellow_color"></i> <span>设置</span></a>
+                        <ul class="collapse list-unstyled" id="apps">
+                           <li><a href="#"  id="person" onclick="gotoPerson(this)">> <span>人员信息</span></a></li>
+                        </ul>
+                     </li>
+                     
+                     <!-- <li><a href="price.html"><i class="fa fa-briefcase blue1_color"></i> <span>Pricing Tables</span></a></li>
+                     <li>
+                        <a href="contact.html">
+                        <i class="fa fa-paper-plane red_color"></i> <span>Contact</span></a>
+                     </li>
+                     <li class="active">
+                        <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Additional Pages</span></a>
+                        <ul class="collapse list-unstyled" id="additional_page">
+                           <li>
+                              <a href="profile.html">> <span>Profile</span></a>
+                           </li>
+                           <li>
+                              <a href="project.html">> <span>Projects</span></a>
+                           </li>
+                           <li>
+                              <a href="login.html">> <span>Login</span></a>
+                           </li>
+                           <li>
+                              <a href="404_error.html">> <span>404 Error</span></a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li><a href="map.html"><i class="fa fa-map purple_color2"></i> <span>Map</span></a></li>
+                     <li><a href="charts.html"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></a></li>
+                     <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li> -->
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                        <div class="logo_section">
+                           <a href="#" onclick="gotoFirst()"><img class="img-responsive" src="images/logo/rklogo.png" alt="#" /></a>
+                        </div>
+                        <div class="right_topbar">
+                           <div class="icon_info">
+                              <ul id="personInfo">
+                                 <!-- <li>姓名</li>
+                                 <li>工号</li>
+                                 <li>工序</li> -->
+                              </ul>
+                              <ul class="user_profile_dd" id="logInfo" hidden="hidden">
+                                 <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/user_img1.png" alt="#" /><span class="name_user" id="username">阿 彪</span></a>
+                                    <div class="dropdown-menu">
+                                       <!-- <a class="dropdown-item" href="profile.html">My Profile</a>
+                                       <a class="dropdown-item" href="settings.html">Settings</a>
+                                       <a class="dropdown-item" href="help.html">Help</a> -->
+                                       <a class="dropdown-item" href="#" id="logout" ><span>退出登陆</span> <i class="fa fa-sign-out"></i></a>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title" style="padding: 5px 35px 5px 38px;margin-bottom: 3px;">
+                              <h2 id="dashboard_bar">Dashboard</h2>
+                           </div>
+                        </div>
+                     </div>
+                     <iframe id="frame" style=" width: 100%;border-width: 0px;"></iframe>
+                     
+                  </div>
+                  <!-- footer -->
+                  <div class="container-fluid">
+                     <div class="footer" style="margin-top: 0px;min-height: 10px;height: 25px;">
+                        <p style="padding: 3px;">Copyright &copy; 2022.Blanink(空行互联) All rights reserved.<a target="_blank" href="http://www.blanink.com">Blanink</a></p>
+                     </div>
+                  </div>
+               </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="js/jquery v3.5.1.min.js"></script>
+      <!-- <script src="js/popper.min.js"></script> -->
+      <script src="js/bootstrap.min.js"></script>
+      <!-- wow animation -->
+      <script src="js/animate.js"></script>
+      <!-- select country -->
+      <script src="js/bootstrap-select.js"></script>
+      <!-- owl carousel -->
+      <script src="js/owl.carousel.js"></script> 
+      <!-- chart js -->
+      <script src="js/Chart.min.js"></script>
+      <script src="js/Chart.bundle.min.js"></script>
+      <script src="js/utils.js"></script>
+      <script src="js/analyser.js"></script>
+      <!-- nice scrollbar -->
+      <script src="js/perfect-scrollbar.min.js"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <!-- <script src="js/custom.js"></script>
+      <script src="js/chart_custom_style1.js"></script> -->
+
+
+      <script>
+         jQuery(document).ready(function() {
+            //checkLogin();		
+            //$('.content-body').removeAttr('style');	
+            var allheight=$(document.body).height();
+            $('#frame').css('height',allheight-148)
+   
+            /*-- sidebar js --*/
+            $('#sidebarCollapse').on('click', function () {
+               $('#sidebar').toggleClass('active');
+            });
+            gotoFirst();
+         });
+
+         window.addEventListener('resize', function() {
+            // 网页文字大小实时改变的代码
+            var allheight=$(document.body).height();
+            $('#frame').css('height',allheight-148)
+         });
+
+         function  gotoFirst(a){
+            //console.log("hello");
+            $('#dashboard_bar').empty();
+            //$('#dashboard_bar').append("  >>首  页");
+            $('#frame').attr("src","./rk-firstPage.html");
+         }
+   
+         function  gotoDashboard(a){
+            //console.log("hello");
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>仪表盘");
+            $('#frame').attr("src","./rk-dashboard.html");
+         }
+
+         function gotoSchedule(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>进度排程");
+            $('#frame').attr("src","./rk-schedule.html");
+            $('#sidebar').toggleClass('active');
+         }
+
+         function gotoEquipment(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>工单设备");
+            $('#frame').attr("src","./rk-equipment.html");
+            $('#sidebar').toggleClass('active');
+         }
+   
+         function gotoOrders(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>工单打印");
+            $('#frame').attr("src","./rk-workOrderList.html");
+         }
+   
+         function gotoTest(a){
+            //console.log(a);
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>质检报工");
+            $('#frame').attr("src","./rk-check.html");
+            $('#sidebar').toggleClass('active');
+         }
+   
+         function gotoClip(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>工序报工");
+            $('#frame').attr("src","./rk-clip.html");
+            $('#sidebar').toggleClass('active');
+         }
+
+         function gotoCheckHisList(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>流转单据");
+            $('#frame').attr("src","./rk-checkHisList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+         function gotoBgList(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>我的报工");
+            $('#frame').attr("src","./rk-bgList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+         
+         function gotoBadList(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>问题记录");
+            $('#frame').attr("src","./rk-badList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+
+         function gotoPerson(a){
+            $('#dashboard_bar').empty();
+            $('#dashboard_bar').append("  >>人员管理");
+            $('#frame').attr("src","./rk-personList.html");
+            //$('#sidebar').toggleClass('active');
+         }
+      </script>
+   
+      <script>
+         function checkLogin(){
+            //console.log(sessionStorage.getItem("token"));
+            if(sessionStorage.getItem("token")==null) {
+               layui.use("layer",function(){
+                  var index=layer.open({
+                     type: 2,
+                     title: '登 陆',
+                     shadeClose: true,
+                     shade: [0.1,'#fff'],
+                     area: ['600px', '500px'],
+                     //btn: ['登陆'],
+                     closeBtn:false,
+                     shadeClose:false,
+                     content: './login.html'
+                     /* yes: function(layero, index){
+                        var form = layero.find('iframe')[0].contentWindow.inputForm;//form.value
+                        var username = form.username.value;
+                        var password=form.password.value;
+                        //console.log(username,password);
+                        if(username=='admin'&&password=='123456'){
+                           sessionStorage.setItem(username,password);
+                           // 隐藏 登录框和遮盖层
+                           layer.close(index);
+                           //跳转到另一个页面
+                           window.location.href="./indexAuth.html";
+                        }else{
+                           alert("账号密码错误，请联系管理员！");
+                        }
+                        
+                     } */
+                  }); 
+               });
+            }else{
+               //获取token信息
+               $('#logInfo').removeAttr("hidden");
+               var token= sessionStorage.getItem("token");
+               $.ajax({
+                  url:'http://192.168.0.168:8080/rk/login/loginWithToken',
+                  type:'post',
+                  data:{},   
+                  cache : false,    
+                  dataType : "json",
+                  headers:{'token': token},
+                  success: function(result){
+                     console.log("tokenis:"+result.data);
+                     $('#username').empty();
+                     $('#username').append(result.data.personName);
+                     $('#personInfo').empty();
+                     $('#personInfo').append("<li>"+result.data.personName+"<li>");
+                     for(var i=0 ;i<result.data.operationList.length;i++){
+                        $('#personInfo').append("<li>"+result.data.operationList[i].opName+"<li>");
+                     }
+                     
+                  },
+                  error: function(){
+                     $('#logInfo').attr("hidden","hidden");
+                     sessionStorage.removeItem("token");
+                     sessionStorage.removeItem("personInfo");
+                     alert('token 已失效，请重新登陆！');
+                     //checkLogin();
+                  }
+               });
+            }
+         }
+   
+         $('#logout').click(function(){
+            $('#logInfo').attr("hidden","hidden");
+            $('#personInfo').empty();
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("personInfo");
+            location.reload();
+            //checkLogin();
+         });
+      </script>
+
+   </body>
+</html>
