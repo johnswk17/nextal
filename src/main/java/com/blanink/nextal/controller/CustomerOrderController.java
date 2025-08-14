@@ -30,6 +30,13 @@ public class CustomerOrderController {
         return pageUtil;
     }
 
+    @GetMapping("/list-user")
+    public PageUtils getCustomerOrderPagedForUser(@RequestParam(required = false) String departmentMachine, Integer pageNo, Integer pageSize, String orderBy, String sortOrder) {
+        if(EmptyUtils.isEmpty(departmentMachine))departmentMachine=null;
+        Page<CustomerOrder> resultList = customerOrderService.findForUserView(pageNo, pageSize, orderBy, sortOrder, departmentMachine);
+        return new PageUtils(resultList.getContent(), (int)resultList.getTotalElements());
+    }
+
     @PutMapping("/updatePriority")
     public ResultView updatePriority(@RequestParam Integer id, @RequestParam Integer priority) {
         try {

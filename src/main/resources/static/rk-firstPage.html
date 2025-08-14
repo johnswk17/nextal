@@ -28,6 +28,8 @@
       <link rel="stylesheet" href="css/perfect-scrollbar.css" />
       <!-- custom css -->
       <link rel="stylesheet" href="css/custom.css" />
+<!--      &lt;!&ndash; bootstrap css &ndash;&gt;
+      <link rel="stylesheet" href="css/font-awesome.min.css" />-->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -116,13 +118,30 @@
                               </div>
                               <div class="counter_no">
                                  <div>
-                                    <p class="total_no">客户订单</p>
+                                    <p class="total_no">订单排产</p>
                                     <p class="head_couter">Schedule</p>
                                  </div>
                               </div>
                            </div>
                         </a>
                      </div>
+                      <div class="col-md-6 col-lg-3">
+                         <a href="#">
+                            <div class="full counter_section margin_bottom_30 blue1_bg" onclick="gotoCustomerOrderUserList(this)">
+                               <div class="couter_icon">
+                                  <div>
+                                     <i class="fa fa-clock-o"></i>
+                                  </div>
+                               </div>
+                               <div class="counter_no">
+                                  <div>
+                                     <p class="total_no">工作详情</p>
+                                     <p class="head_couter">Schedule</p>
+                                  </div>
+                               </div>
+                            </div>
+                         </a>
+                      </div>
                    
                      <div class="col-md-6 col-lg-3">
                         <a href="#">
@@ -341,8 +360,15 @@
 
          function gotoCustomerOrderList(a){
             parent.$('#dashboard_bar').empty();
-            parent.$('#dashboard_bar').append("  >>客户订单明细");
+            parent.$('#dashboard_bar').append("  >>客户订单排产");
             parent.$('#frame').attr("src","./nextal-CustomerOrder.html");
+            parent.$('#sidebar').toggleClass('active');
+         }
+
+         function gotoCustomerOrderUserList(a){
+            parent.$('#dashboard_bar').empty();
+            parent.$('#dashboard_bar').append("  >>客户订单明细");
+            parent.$('#frame').attr("src","./nextal-customerOrder-user.html");
             parent.$('#sidebar').toggleClass('active');
          }
    

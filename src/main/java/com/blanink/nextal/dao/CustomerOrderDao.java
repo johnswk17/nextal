@@ -19,4 +19,7 @@ public interface CustomerOrderDao extends JpaRepository<CustomerOrder , Integer>
     @Modifying
     @Query("UPDATE CustomerOrder co SET co.priority = :priority WHERE co.id = :id")
     void updatePriorityById(@Param("id") Integer id, @Param("priority") Integer priority);
+
+    @Query("SELECT SUM(op.planQuantity) FROM OrderPlan op WHERE op.moNo = :moNo AND op.planDate >= :currentDate")
+    Integer sumPlanQuantityByMoNoAndDate(@Param("moNo") String moNo, @Param("currentDate") java.util.Date currentDate);
 }

@@ -112,6 +112,50 @@ public class CustomerOrder {
     @Transient
     private List<MoldDetail> moldDetails;
 
+    @Transient
+    private Integer dispatchedQuantity;
+
+    @Transient
+    private OrderPlan todayOrderPlan;
+
+    @Transient
+    private OrderPlan tomorrowOrderPlan;
+
+    @Transient
+    private java.math.BigDecimal todaysFeedbackQuantity;
+
+    public java.math.BigDecimal getTodaysFeedbackQuantity() {
+        return todaysFeedbackQuantity;
+    }
+
+    public void setTodaysFeedbackQuantity(java.math.BigDecimal todaysFeedbackQuantity) {
+        this.todaysFeedbackQuantity = todaysFeedbackQuantity;
+    }
+
+    public OrderPlan getTodayOrderPlan() {
+        return todayOrderPlan;
+    }
+
+    public void setTodayOrderPlan(OrderPlan todayOrderPlan) {
+        this.todayOrderPlan = todayOrderPlan;
+    }
+
+    public OrderPlan getTomorrowOrderPlan() {
+        return tomorrowOrderPlan;
+    }
+
+    public void setTomorrowOrderPlan(OrderPlan tomorrowOrderPlan) {
+        this.tomorrowOrderPlan = tomorrowOrderPlan;
+    }
+
+    public Integer getDispatchedQuantity() {
+        return dispatchedQuantity;
+    }
+
+    public void setDispatchedQuantity(Integer dispatchedQuantity) {
+        this.dispatchedQuantity = dispatchedQuantity;
+    }
+
     public List<MoldDetail> getMoldDetails() {
         return moldDetails;
     }
