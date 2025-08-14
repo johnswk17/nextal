@@ -1,0 +1,246 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="铝棒库存-Blanink">
+	    <meta property="og:title" content="铝棒库存-Blanink">
+	    <meta property="og:description" content="铝棒库存-Blanink">
+        <title>铝棒库存</title>
+        <!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="js/bootstrap-table-master/dist/bootstrap-table.min.css">
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="js/layui-main/dist/css/layui.css">
+	    <script type="text/javascript" src="js/layui-main/dist/layui.js"></script>
+        
+        <style>
+            .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 0px;
+                padding-left: 15px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <form id="searchForm"  action="" method="post" class="breadcrumb form-search" >
+            <div class="row layui-form">
+                <div class="row">
+                    <div class="mb-8 col-md-8">
+                        <div class="row">
+                            <div class="mb-6  col-md-6  layui-input-wrap" >
+                                <input name="departmentMachine" htmlEscape="false" maxlength="100" class="form-control layui-input" lay-affix="clear" placeholder="部门机台" />
+                            </div>
+                            <div class="mb-3  col-md-3  layui-input-wrap" >
+                                <input name="material" htmlEscape="false" maxlength="100" class="form-control layui-input" lay-affix="clear" placeholder="材质" />
+                            </div>
+                            <div class="mb-2  col-md-2" >
+                                <input id="btnSubmit" class="btn btn-primary" type="button"  value="查询" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 col-md-4">
+                        <button class="btn btn-success" type="button"  value="点击全屏" id="full" onclick="fullScreen()">点击全屏</button>
+                        <button class="btn btn-danger" type="button" hidden value="点击全屏" id="exitFull" onclick="exitScreen()">退出全屏</button>
+                        <button class="btn btn-primary" type="button"  value="点击全屏" id="exitFull" onclick="goBack()">主页</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table id="contentTable" data-fixed-columns="true" data-fixed-number="1" ></table>
+
+        <div id="modalContainer"></div>
+
+        <script src="js/popper.min.js"></script>
+        <script src="js/jquery v3.5.1.min.js"></script>
+        <script src="js/jquery.serializejson.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+        <script>
+            var currentPageData = [];
+
+            jQuery(document).ready(function() {
+                loadTable();	
+
+                $(document).on('click', '.view-mold-details', function(e) {
+                    e.preventDefault();
+                    var index = $(this).data('index');
+                    var moldDetails = currentPageData[index].moldDetails;
+
+                    $('#modalContainer').load('mold-details-dialog.html', function() {
+                        var tbody = $('#moldDetailsTbody');
+                        tbody.empty(); 
+
+                        if (moldDetails && moldDetails.length > 0) {
+                            moldDetails.forEach(function(detail) {
+                                var transferDate = detail.transferDate ? new Date(detail.transferDate).toLocaleString() : '';
+                                var row = '<tr>' +
+                                    '<td>' + detail.moldCode + '</td>' +
+                                    '<td>' + detail.locationName + '</td>' +
+                                    '<td>' + transferDate + '</td>' +
+                                    '<td>' + detail.machineName + '</td>' +
+                                    '<td>' + detail.moldDrawingNumber + '</td>' +
+                                    '</tr>';
+                                tbody.append(row);
+                            });
+                        } else {
+                            tbody.append('<tr><td colspan="5" class="text-center">没有相关的模具详情</td></tr>');
+                        }
+
+                        $('#moldDetailsModal').modal('show');
+                    });
+                });
+            });
+
+            function openDispatchPage(id, mono, moldDrawingNo) {
+                layer.open({
+                    type: 2,
+                    title: '为制令单号: ' + mono + ' 创建派工计划',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['80%', '90%'],
+                    content: 'dispatch-order.html?customerOrderId=' + id + '&moNo=' + mono + '&moldDrawingNo=' + moldDrawingNo
+                });
+            }
+
+            function formatDispatchCell(plan, todaysFeedback) {
+                if (!plan) {
+                    return '<span style="color: #999;">无</span>';
+                }
+                var planQty = plan.planQuantity || 0;
+                var feedbackQty = todaysFeedback || 0;
+                var displayQty = planQty - feedbackQty;
+                var moldQty = plan.moldQuantity || 0;
+                return '数量: ' + displayQty + ', 模具: ' + moldQty;
+            }
+
+            function loadTable(){
+                var url = "http://192.168.0.168:8080/nextal/customerOrder/list-user";
+                var columns=[
+                    { field: 'customerNo', title: '客户代号', align: 'center' },
+                    { field: 'moNo', title: '制令单号', align: 'center' },
+                    { field: 'departmentMachine', title: '部门机台', align: 'center' },
+                    { field: 'moldDrawingNo', title: '模具图号', align: 'center' },
+                    {
+                        field: 'moldDetails',
+                        title: '模具数量',
+                        align: 'center',
+                        formatter: function(value, row, index) {
+                            var count = (row.moldDetails && row.moldDetails.length) ? row.moldDetails.length : 0;
+                            if (count > 0) {
+                                return '<a href="#" class="view-mold-details" data-index="' + index + '">' + count + '</a>';
+                            }
+                            return count;
+                        }
+                    },{
+                        field: 'priority',
+                        title: '优先级',
+                        align: 'center'
+                    },
+                    { field: 'mrpNo', title: '货品代号', align: 'center' },
+                    { field: 'spec', title: '规格', align: 'center' },
+                    { field: 'material', title: '材质', align: 'center' },
+                    { field: 'orderQty', title: '订单量', align: 'center' },
+                    { field: 'finishedQty', title: '已完工量', align: 'center' },
+                    { field: 'unfinishedQty', title: '未完工量', align: 'center' },
+                    {
+                        field: 'todayOrderPlan',
+                        title: '今日派工',
+                        align: 'center',
+                        formatter: function(value, row) {
+                            return formatDispatchCell(row.todayOrderPlan, row.todaysFeedbackQuantity);
+                        }
+                    },
+                    {
+                        field: 'todaysFeedbackQuantity',
+                        title: '今日缴库',
+                        align: 'center'
+                    },
+                    {
+                        field: 'tomorrowOrderPlan',
+                        title: '明日派工',
+                        align: 'center',
+                        formatter: function(value, row) {
+                            // 明日派工不减去今日缴库
+                            if (!row.tomorrowOrderPlan) {
+                                return '<span style="color: #999;">无</span>';
+                            }
+                            var planQty = row.tomorrowOrderPlan.planQuantity || 0;
+                            var moldQty = row.tomorrowOrderPlan.moldQuantity || 0;
+                            return '数量: ' + planQty + ', 模具: ' + moldQty;
+                        }
+                    },
+                    {
+                        field: 'startDate',
+                        title: '预开工日',
+                        align: 'center',
+                        formatter: function(value) { return value ? value.substring(0, 10) : ''; }
+                    },{
+                        field: 'endDate',
+                        title: '预完工日',
+                        align: 'center',
+                        formatter: function(value) { return value ? value.substring(0, 10) : ''; }
+                    },
+                    { field: 'remark', title: '备注', align: 'center' }
+                ];
+
+                $("#contentTable").bootstrapTable({
+                    url: url, 
+					method: 'get',
+                    columns:columns,
+                    contentType : "application/json",
+                    cache: false,
+                    onLoadSuccess: function(data) {
+                        currentPageData = data.rows;
+                    },
+                    queryParams: function(params){
+                        var obj = $("#searchForm").serializeJSON();
+                        obj.pageSize= params.limit;
+                        obj.pageNo= Math.ceil(params.offset/params.limit) + 1;
+                        obj.orderBy= params.sort;
+                        obj.sortOrder=params.order;
+                        return obj;
+                    }, 
+                    queryParamsType: "limit", 
+                    pagination:true,
+                    sidePagination: "server",
+                    resizable:true,
+                    pageSize:10,
+                    pageList:[10,50,100],
+                    formatLoadingMessage: function () { return "请稍等，玩命加载中..."; }
+                });
+            }
+
+			$("#btnSubmit").click(function(){
+				$("#contentTable").bootstrapTable('refresh');
+			}); 
+
+            function fullScreen() {
+                $('#full').attr("hidden","hidden");
+                $('#exitFull').removeAttr("hidden");
+				var el = document.documentElement;
+				el.requestFullscreen||el.mozRequestFullScreen||el.webkitRequestFullscreen||el.msRequestFullScreen?
+				el.requestFullscreen()||el.mozRequestFullScreen()|| el.webkitRequestFullscreen()||el.msRequestFullscreen():null;
+			}
+
+            function exitScreen() {
+                $('#exitFull').attr("hidden","hidden");
+                $('#full').removeAttr("hidden");
+                var el = document;
+                var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
+                if (cfs) { cfs.call(el); }
+            }
+
+            function goBack(){
+                parent.$('#dashboard_bar').empty();
+                parent.$('#dashboard_bar').append("  >>REAK MES SYSTEM");
+                parent.$('#frame').attr("src","./rk-firstPage.html");
+            }
+
+        </script>
+    </body>
+</html>
